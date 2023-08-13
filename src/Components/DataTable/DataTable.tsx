@@ -51,6 +51,7 @@ const DataTable = () => {
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
+      className="datagrid"
         rows={rows}
         columns={columns}
         initialState={{
