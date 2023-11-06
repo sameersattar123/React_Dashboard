@@ -4,6 +4,8 @@ import Layout from "../../Layout"
 import "./Users.scss"
 import noavatar from "../../assets/noavatar.png"
 import { userRows } from "../../data";
+import {useState} from "react"
+import Add from "../../Components/Add/Add";
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -54,15 +56,21 @@ renderCell : (params) => {
 
 
 const Users = () => {
+  const [open, setOpen] = useState(false)
+  
 
   return (
     <Layout>
     <div className="Users">
       <div className="info">
         <h1>Users</h1>
-        <button>Add New Users</button>
+        <button onClick={() => setOpen(true)}>Add New Users</button>
       </div>
       <DataTable slug="users" columns={columns} rows={userRows} />
+      {
+        open &&
+        <Add columns={columns} slugs="users" setOpen={setOpen}/>
+      }
     </div>
     </Layout>
   )
