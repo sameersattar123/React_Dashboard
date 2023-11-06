@@ -8,6 +8,14 @@ type Props = {
 }
 
 const Add = (props:Props) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    //add new item
+    // mutation.mutate();
+    props.setOpen(false)
+  };
+
   return (
     <div className='add'>
         <div className="modal">
@@ -15,6 +23,19 @@ const Add = (props:Props) => {
           X
         </span>
           <h1>Add new {props.slugs}</h1>
+          <form onSubmit={handleSubmit}>
+            {
+              props.columns.filter((item) => item.field !== "id" && item.field !== "img").map((column) => {
+                 return(
+                  <div className="item">
+                     <label>{column.headerName}</label>
+                     <input type={column.type} placeholder={column.field} />
+                  </div>
+                 )
+              })
+            } 
+            <button>Send</button>
+          </form>
         </div>
     </div>
   )
