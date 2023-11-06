@@ -14,9 +14,9 @@ const Navbar = () => {
         <span>Sameer DashBoard</span>
       </div>
       <div className="icons">
-        <img src={search} alt="" />
-        <img src={app} alt="" />
-        <img src={expand} alt="" />
+        <img src={search} alt="" className="icon" />
+        <img src={app} alt="" className="icon" />
+        <img src={expand} alt="" className="icon" />
         <div className="notification">
         <img src={notification} alt="" />
           <span>1</span>
