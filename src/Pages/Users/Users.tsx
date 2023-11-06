@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
 },
 { field: 'status', headerName: 'Status', width: 100 , type : "boolean"},
 { field: 'actions', headerName: 'Actions', width: 100,
-renderCell : (params) => {
+renderCell : () => {
   return <div className="action">
     <div className="view">Views</div>
     <div className="delete">Delete</div>

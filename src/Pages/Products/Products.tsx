@@ -1,4 +1,4 @@
-import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
+import { GridColDef } from "@mui/x-data-grid"
 import Add from "../../Components/Add/Add"
 import DataTable from "../../Components/DataTable/DataTable"
 import Layout from "../../Layout"
