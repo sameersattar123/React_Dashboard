@@ -2,6 +2,8 @@ import "./DataTable.scss"
 import { DataGrid, GridColDef, GridToolbar , GridValueGetterParams } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
+import view from "../../assets/view.svg"
+import Delete from "../../assets/delete.svg"
 
 type Props = {
   columns : GridColDef[],
@@ -13,6 +15,10 @@ type Props = {
   
 const DataTable = (props:Props) => {
 
+  const handleDelete = (id:number) => {
+    console.log(id+" has been deleted")
+  }
+
     const actionColumn:GridColDef = {
       field:"action",
       headerName : "Action",
@@ -20,11 +26,11 @@ const DataTable = (props:Props) => {
       renderCell:(params)=> {
         return(
           <div className="action">
-            <Link to="">
-            <img src="/view.svg" alt="" />
+            <Link to={`/${props.slug}/${params.row.id}`}>
+            <img src={view} alt="" />
             </Link>
-            <Link className="delete" to="">
-            <img src="/delete.svg" alt="" />
+            <Link className="delete" to="" onClick={() => handleDelete(params.row.id)}>
+            <img src={Delete} alt="" />
             </Link>
           </div>
         )
@@ -36,7 +42,7 @@ const DataTable = (props:Props) => {
       <DataGrid
       className="datagrid"
         rows={props.rows}
-        columns={props.columns}
+        columns={[...props.columns,actionColumn]}
         initialState={{
           pagination: {
             paginationModel: {
